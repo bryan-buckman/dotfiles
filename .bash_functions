@@ -32,13 +32,45 @@ man() {
                 LESS_TERMCAP_us="$(printf '\e[1;32m')" \
                 man "$@"
 }
+certchain() {
+if [[ "$#" -ne 1 ]]; then
+          echo "Usage: ${FUNCNAME} <ip|domain[:port]>"
+          return 1
+      fi
+
+      local host_port="$1"
+
+      if [[ "$1" != *:* ]]; then
+          local host_port="${1}:443"
+      fi
+
+      openssl s_client -connect "${host_port}" </dev/null 2>/dev/null | grep -E '\ (s|i):'
+  }
+
+cheat()  {
+    curl cht.sh/$1
+    }
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 newest() {
     find . -type f \( ! -regex '.*/\..*' \) -print0 | xargs -0 stat -c "%Y:%n" | sort -n | tail -n "${1:-5}" | cut -d ':' -f2-
 }
+qfind () {  
+    find . -exec grep -l -s $1 {} \;  return 0
+    }
 ssh-asap() {
 	until nc -vzw 2 $1 22 > /dev/null 2>&1; do sleep 1; done	
 	ssh -X $1;
 }
+up () {
+        local tmp_path=''
+        for i in $(seq 1 ${1:-1})
+        do
+            tmp_path+='../'
+        done
+        cd "$tmp_path"
+    }
+weather() {
+    curl wttr.in/$1
+    }
