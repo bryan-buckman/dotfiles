@@ -65,8 +65,8 @@ alias cpv="rsync -ah --info=progress2 --no-inc-recursive --stats"
 alias csv='column -s, -t' 
 alias dcla="docker container ls -a"
 alias dlf="docker logs -f --tail 1000"
-alias dtail='dmesg|tail'
-alias ff="rg --files --hidden --glob '!.git' | fzf --preview 'bat --style=numbers --color=always --line-range :200 {}'"
+alias dtail='sudo dmesg|tail'
+alias ff="sudo rg --files --hidden --glob '!.git' | fzf --preview 'bat --style=numbers --color=always --line-range :200 {}'"
 alias fs="stat -f \'%z bytes\'"
 alias fx='firefox --new-instance --profile $(mktemp -d)'
 alias ifconfig='grc ifconfig'
