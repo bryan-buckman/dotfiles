@@ -12,4 +12,3 @@ set incsearch
 set hlsearch
 filetype indent on
 syntax on
-colorscheme monokai

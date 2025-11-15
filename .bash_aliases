@@ -21,6 +21,18 @@ alias ping='grc ping'
 alias vmstat='vmstat -w'
 alias wget='wget -c'
 
+## APT Aliases
+
+if command -v apt &> /dev/null; then
+    alias apt-get="apt-get -q -o Dpkg::Progress=true -o Dpkg::Progress-Fancy=true -o APT::Get::AutomaticRemove=true"
+    alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
+    alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
+    alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+    alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+    alias apt-get='sudo apt-get'
+    alias update='sudo apt update && sudo apt upgrade'
+fi
+
 ## Directory Aliases
 
 alias ..='cd ..'

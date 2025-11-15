@@ -59,7 +59,7 @@ newest() {
 qfind () {  
     find . -exec grep -l -s $1 {} \;  return 0
     }
-ssh-asap() {
+sshasap() {
 	until nc -vzw 2 $1 22 > /dev/null 2>&1; do sleep 1; done	
 	ssh -X $1;
 }
